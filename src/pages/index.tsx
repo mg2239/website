@@ -1,4 +1,6 @@
-import * as React from "react";
+import React from "react";
+
+// todo: update all dependencies
 
 export default () => {
   return (
