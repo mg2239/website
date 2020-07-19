@@ -1,0 +1,42 @@
+.heading {
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(200px, auto);
+}
+
+.project {
+  position: relative;
+  overflow: hidden;
+}
+
+.project:hover .projectOverlay {
+  opacity: 1;
+}
+
+.projectImg {
+  display: block;
+  width: 100%;
+}
+
+.projectOverlay {
+  position: absolute;
+  top: 0;
+  transition: opacity 0.2s ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+}
+
+.projectOverlayInner {
+  margin: 1rem;
+}
+
+.projectCategory {
+  font-weight: 700;
+}
