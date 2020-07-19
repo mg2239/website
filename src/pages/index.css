@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -10,34 +8,30 @@ body {
   margin: auto;
   width: 80%;
   max-width: 1000px;
-  padding: 48px 0;
+  padding: 5rem 0;
 }
 
 h1, h2, a, p {
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   color: #1e1e24;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-bottom: 0.25rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 a {
-  transition: color 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 a:hover {
-  color: #474853;
-}
-
-.section {
-  margin-bottom: 24px;
+  color: #6b6d7a;
 }

@@ -17,7 +17,7 @@ const Project = ({
       <div className={styles.projectOverlayInner}>
         <h2>{title}</h2>
         <p className={styles.projectCategory}>{category}</p>
-        <p>{caption}</p>
+        <p className={styles.projectCaption}>{caption}</p>
         <TabLink className={styles.projectBtn} to={link}>
           {`visit ${linkType}`}
         </TabLink>
