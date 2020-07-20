@@ -7,7 +7,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
-  grid-auto-rows: minmax(200px, auto);
 }
 
 .project {
@@ -64,8 +63,36 @@
   border-color: #6b6d7a;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 601px) and (max-width: 768px) {
+  .projectCategory, .projectCaption, .projectBtn {
+    font-size: 0.9rem;
+  }
+
+  .projectCategory {
+    margin-bottom: 0.6rem;
+  }
+  
+  .projectCaption {
+    margin-bottom: 0.6rem;
+  }
+}
+
+@media (max-width: 600px) {
   .grid {
-    grid-template-columns: repeat(1, 1fr)
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .projectCategory, .projectCaption, .projectBtn {
+    font-size: 0.9rem;
+  }
+
+  .projectCategory {
+    margin-bottom: 0.6rem;
+  }
+  
+  .projectCaption {
+    margin-bottom: 0.6rem;
   }
 }

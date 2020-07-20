@@ -19,7 +19,7 @@ const Project = ({
         <p className={styles.projectCategory}>{category}</p>
         <p className={styles.projectCaption}>{caption}</p>
         <TabLink className={styles.projectBtn} to={link}>
-          {`visit ${linkType}`}
+          {`Visit ${linkType}`}
         </TabLink>
       </div>
     </div>
@@ -28,7 +28,7 @@ const Project = ({
 
 export default () => (
   <div className="section">
-    <h1 className={styles.heading}>experience + projects</h1>
+    <h1 className={styles.heading}>Experience + Projects</h1>
     <div className={styles.grid}>
       {projects.map((project) => (
         <Project

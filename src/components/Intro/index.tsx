@@ -31,26 +31,23 @@ export default () => (
   <div className={styles.ctr}>
     <div className={styles.headingCtr}>
       <img className={styles.img} src={bear} />
-      <h1 className={styles.heading}>hi i'm matthew</h1>
+      <h1 className={styles.heading}>Hi, I'm Matthew 👋</h1>
       <Icons />
     </div>
     <div className={styles.textCtr}>
       <p className={styles.bodyTxt}>
-        i'm a junior studying cs and minoring in ux design at cornell
+        I'm a junior at Cornell studying CS and minoring in UX Design.
       </p>
       <p className={styles.bodyTxt}>
-        i mainly do full-stack development, but i experiment with anything that
-        interests me
+        I like working on projects that combine my interests with CS.
       </p>
       <p className={styles.bodyTxt}>
-        in my free time i{' '}
-        <TabLink to="https://soundcloud.com/polarr">
-          create electronic music
-        </TabLink>{' '}
-        and learn how to draw
+        In my free time, I produce{' '}
+        <TabLink to="https://soundcloud.com/polarr">electronic music</TabLink>{' '}
+        and learn how to draw.
       </p>
       <p className={styles.bodyTxt}>
-        check out some things i've worked on below!
+        Check out some things i've worked on below!
       </p>
     </div>
   </div>
