@@ -18,7 +18,7 @@ const Project = ({
         <h2>{title}</h2>
         <p className={styles.projectCategory}>{category}</p>
         <p className={styles.projectCaption}>{caption}</p>
-        <TabLink className={styles.projectBtn} to={link}>
+        <TabLink className={styles.projectLink} to={link}>
           {`Visit ${linkType}`}
         </TabLink>
       </div>

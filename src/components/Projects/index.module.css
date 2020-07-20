@@ -52,19 +52,19 @@
   margin-bottom: 1rem;
 }
 
-.projectBtn {
+.projectLink {
   text-decoration: none;
   padding: 0.5rem;
   border: 1px #1e1e24 solid;
 }
 
-.projectBtn:hover {
+.projectLink:hover {
   text-decoration: none;
   border-color: #6b6d7a;
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
-  .projectCategory, .projectCaption, .projectBtn {
+  .projectCategory, .projectCaption, .projectLink {
     font-size: 0.9rem;
   }
 
@@ -84,7 +84,7 @@
 }
 
 @media (max-width: 400px) {
-  .projectCategory, .projectCaption, .projectBtn {
+  .projectCategory, .projectCaption, .projectLink {
     font-size: 0.9rem;
   }
 
