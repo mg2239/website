@@ -31,7 +31,7 @@ export default () => (
   <div className={styles.ctr}>
     <div className={styles.headingCtr}>
       <img className={styles.img} src={bear} />
-      <h1 className={styles.heading}>Hi, I'm Matthew 👋</h1>
+      <h1 className={styles.heading}>Hi, I'm Matthew</h1>
       <Icons />
     </div>
     <div className={styles.bodyCtr}>
