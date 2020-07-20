@@ -1,14 +1,16 @@
 import React from 'react';
 import Head from '../components/Head';
-import Main from '../components/Main';
-import '../utils/normalize.css';
-import '../utils/index.css';
+import Intro from '../components/Intro';
+import Projects from '../components/Projects';
+import 'normalize.css';
+import './index.css';
 
 export default () => {
   return (
     <>
       <Head />
-      <Main />
+      <Intro />
+      <Projects />
     </>
   );
 };
