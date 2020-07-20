@@ -34,21 +34,15 @@ export default () => (
       <h1 className={styles.heading}>Hi, I'm Matthew 👋</h1>
       <Icons />
     </div>
-    <div className={styles.textCtr}>
-      <p className={styles.bodyTxt}>
-        I'm a junior at Cornell studying CS and minoring in UX Design.
-      </p>
-      <p className={styles.bodyTxt}>
-        I like working on projects that combine my interests with CS.
-      </p>
-      <p className={styles.bodyTxt}>
+    <div className={styles.bodyCtr}>
+      <p>I'm a junior at Cornell studying CS and minoring in UX Design.</p>
+      <p>I like working on projects that combine my interests with CS.</p>
+      <p>
         In my free time, I produce{' '}
         <TabLink to="https://soundcloud.com/polarr">electronic music</TabLink>{' '}
         and learn how to draw.
       </p>
-      <p className={styles.bodyTxt}>
-        Check out some things i've worked on below!
-      </p>
+      <p>Check out some things I've worked on below!</p>
     </div>
   </div>
 );
