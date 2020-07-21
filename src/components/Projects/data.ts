@@ -47,8 +47,8 @@ const projects: ProjectType[] = [
     linkType: 'Website',
   },
   {
-    title: 'Carriage',
-    caption: 'Helping students w/ disabilities get around campus.',
+    title: 'DTI',
+    caption: 'Working on Carriage, a ride scheduling app for CULift.',
     category: 'Project Team',
     img: carriage,
     link: 'https://github.com/cornell-dti/carriage-web',
