@@ -25,7 +25,7 @@ const projects: ProjectType[] = [
   {
     title: 'wippy',
     caption: 'Music sharing with expiring links.',
-    category: 'Work In Progress',
+    category: 'Project',
     img: wippy,
     link: 'https://wippy.now.sh/',
     linkType: 'Website',
@@ -33,7 +33,7 @@ const projects: ProjectType[] = [
   {
     title: 'Mandarin Helper',
     caption: 'Flashcards for CHIN 1101/1102 students.',
-    category: 'Work In Progress',
+    category: 'Project',
     img: mandarin,
     link: 'https://mandarin-helper.web.app/',
     linkType: 'Website',
