@@ -27,8 +27,8 @@ const projects: ProjectType[] = [
     caption: 'Music sharing with expiring links.',
     category: 'Work In Progress',
     img: wippy,
-    link: 'https://github.com/mg2239/wippy',
-    linkType: 'GitHub',
+    link: 'https://wippy.now.sh/',
+    linkType: 'Website',
   },
   {
     title: 'Mandarin Helper',
