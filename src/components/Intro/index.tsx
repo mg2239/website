@@ -35,7 +35,7 @@ export default () => (
       <Icons />
     </div>
     <div className={styles.bodyCtr}>
-      <p>I'm a junior at Cornell studying CS and minoring in UX Design.</p>
+      <p>I'm a junior at Cornell studying Computer Science.</p>
       <p>I like working on projects that combine my interests with CS.</p>
       <p>
         In my free time, I produce{' '}
