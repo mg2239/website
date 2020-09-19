@@ -37,11 +37,7 @@ export default () => (
     <div className={styles.bodyCtr}>
       <p>I'm a junior at Cornell studying Computer Science.</p>
       <p>I like working on projects that combine my interests with CS.</p>
-      <p>
-        In my free time, I produce{' '}
-        <TabLink to="https://soundcloud.com/polarr">electronic music</TabLink>{' '}
-        and learn how to draw.
-      </p>
+      <p>In my free time, I produce electronic music and learn how to draw.</p>
       <p>Check out some things I've worked on below!</p>
     </div>
   </div>
