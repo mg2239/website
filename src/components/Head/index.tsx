@@ -4,7 +4,7 @@ import apple from './apple-touch-icon.png';
 import favicon32 from './favicon-32x32.png';
 import favicon16 from './favicon-16x16.png';
 
-const Head = () => (
+export default () => (
   <Helmet title="matthew guo">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -18,5 +18,3 @@ const Head = () => (
     />
   </Helmet>
 );
-
-export default Head;

@@ -5,11 +5,9 @@ import {
   AiFillGithub,
   AiFillLinkedin,
 } from 'react-icons/ai';
-
 import TabLink from '../../common/TabLink';
-import bear from './images/bear.svg';
-
-import styles from './index.module.css';
+import { bear } from './images';
+import styles from './intro.module.css';
 
 const Icons = () => (
   <IconContext.Provider value={{ className: styles.icon }}>

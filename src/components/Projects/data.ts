@@ -1,17 +1,13 @@
-import bloom from './images/bloom.svg';
-import wippy from './images/wippy.svg';
-import mandarin from './images/mandarin.svg';
-import mixi from './images/mixi.svg';
-import carriage from './images/carriage.svg';
+import { bloom, carriage, mandarin, mixi, wippy } from './images';
 
-export type ProjectType = {
-  title: string;
+export interface ProjectType {
   caption: string;
   category: string;
-  img: string;
   link: string;
   linkType: string;
-};
+  img: string;
+  title: string;
+}
 
 const projects: ProjectType[] = [
   {

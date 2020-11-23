@@ -1,6 +1,6 @@
 import React from 'react';
 import projects, { ProjectType } from './data';
-import styles from './index.module.css';
+import styles from './projects.module.css';
 import TabLink from '../../common/TabLink';
 
 const Project = ({
@@ -30,14 +30,7 @@ export default () => (
   <div className="section">
     <div className={styles.grid}>
       {projects.map((project) => (
-        <Project
-          caption={project.caption}
-          category={project.category}
-          img={project.img}
-          link={project.link}
-          linkType={project.linkType}
-          title={project.title}
-        />
+        <Project key={project.title} {...project} />
       ))}
     </div>
   </div>
