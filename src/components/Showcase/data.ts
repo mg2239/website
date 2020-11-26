@@ -1,4 +1,4 @@
-import { bloom, carriage, mandarin, mixi, wippy } from './images';
+import { bloom, cameo, carriage, mandarin, mixi, wippy } from './images';
 
 export interface ShowcaseItem {
   caption: string;
@@ -11,9 +11,17 @@ export interface ShowcaseItem {
 
 export const showcaseData: ShowcaseItem[] = [
   {
+    title: 'Cameo',
+    caption: 'Personalized videos feat. your favorite stars.',
+    category: 'Incoming Software Engineering Intern',
+    img: cameo,
+    link: 'https://www.cameo.com/',
+    linkType: 'Website',
+  },
+  {
     title: 'Bloom',
     caption: 'Curating friendships for students.',
-    category: 'Full-Stack Internship',
+    category: 'Full-Stack Engineering Intern',
     img: bloom,
     link: 'https://www.linkedin.com/company/bloom-university/about/',
     linkType: 'LinkedIn',
@@ -43,9 +51,9 @@ export const showcaseData: ShowcaseItem[] = [
     linkType: 'Website',
   },
   {
-    title: 'DTI',
-    caption: 'Working on Carriage, a ride scheduling app for CULift.',
-    category: 'Project Team',
+    title: 'Carriage',
+    caption: 'Ride scheduling app for CULift.',
+    category: 'Cornell DTI',
     img: carriage,
     link: 'https://github.com/cornell-dti/carriage-web',
     linkType: 'GitHub',
