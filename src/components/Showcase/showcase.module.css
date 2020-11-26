@@ -5,25 +5,25 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
 
-.project {
+.item {
   position: relative;
   overflow: hidden;
 }
 
-.project:hover .projectOverlay {
+.item:hover .itemOverlay {
   opacity: 1;
 }
 
-.projectImg {
+.itemImg {
   display: block;
   width: 100%;
 }
 
-.projectOverlay {
+.itemOverlay {
   position: absolute;
   top: 0;
   transition: opacity 0.2s ease-in-out;
@@ -34,7 +34,7 @@
   text-align: center
 }
 
-.projectOverlayInner {
+.itemOverlayInner {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,36 +43,42 @@
   margin: 0 1rem;
 }
 
-.projectCategory {
+.itemCategory {
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.projectCaption {
+.itemCaption {
   margin-bottom: 1rem;
 }
 
-.projectLink {
+.itemLink {
   text-decoration: none;
   padding: 0.5rem;
   border: 1px #1e1e24 solid;
 }
 
-.projectLink:hover {
+.itemLink:hover {
   text-decoration: none;
   border-color: #6b6d7a;
 }
 
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 601px) and (max-width: 768px) {
-  .projectCategory, .projectCaption, .projectLink {
+  .itemCategory, .itemCaption, .itemLink {
     font-size: 0.9rem;
   }
 
-  .projectCategory {
+  .itemCategory {
     margin-bottom: 0.6rem;
   }
   
-  .projectCaption {
+  .itemCaption {
     margin-bottom: 0.6rem;
   }
 }
@@ -84,15 +90,15 @@
 }
 
 @media (max-width: 400px) {
-  .projectCategory, .projectCaption, .projectLink {
+  .itemCategory, .itemCaption, .itemLink {
     font-size: 0.9rem;
   }
 
-  .projectCategory {
+  .itemCategory {
     margin-bottom: 0.6rem;
   }
   
-  .projectCaption {
+  .itemCaption {
     margin-bottom: 0.6rem;
   }
 }

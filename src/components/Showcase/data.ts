@@ -1,6 +1,6 @@
 import { bloom, carriage, mandarin, mixi, wippy } from './images';
 
-export interface ProjectType {
+export interface ShowcaseItem {
   caption: string;
   category: string;
   link: string;
@@ -9,7 +9,7 @@ export interface ProjectType {
   title: string;
 }
 
-const projects: ProjectType[] = [
+export const showcaseData: ShowcaseItem[] = [
   {
     title: 'Bloom',
     caption: 'Curating friendships for students.',
@@ -51,5 +51,3 @@ const projects: ProjectType[] = [
     linkType: 'GitHub',
   },
 ];
-
-export default projects;

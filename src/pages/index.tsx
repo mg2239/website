@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from '../components/Head';
 import Intro from '../components/Intro';
-import Projects from '../components/Projects';
+import Showcase from '../components/Showcase';
 import 'normalize.css';
 import './index.css';
 
@@ -10,7 +10,7 @@ export default () => {
     <>
       <Head />
       <Intro />
-      <Projects />
+      <Showcase />
     </>
   );
 };

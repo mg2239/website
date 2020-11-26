@@ -7,7 +7,7 @@ html {
 body {
   margin: auto;
   width: 80%;
-  max-width: 750px;
+  max-width: 1000px;
   padding: 5rem 0;
 }
 
@@ -35,6 +35,12 @@ a {
 
 a:hover {
   color: #6b6d7a;
+}
+
+@media (max-width: 1024px) {
+  body {
+    max-width: 750px;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
