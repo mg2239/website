@@ -1,5 +1,3 @@
-import React from 'react';
-
 type TabLinkProps = {
   className?: string;
   to: string;

@@ -1,7 +1,6 @@
-import React from 'react';
 import { showcaseData, ShowcaseItem as ShowcaseItemProps } from './data';
 import styles from './showcase.module.css';
-import TabLink from '../../common/TabLink';
+import TabLink from '../../common/TabLink/TabLink';
 
 const ShowcaseItem = ({
   caption,

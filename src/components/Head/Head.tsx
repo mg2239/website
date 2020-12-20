@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import apple from './apple-touch-icon.png';
 import favicon32 from './favicon-32x32.png';

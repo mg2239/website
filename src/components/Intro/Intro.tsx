@@ -1,12 +1,11 @@
-import React from 'react';
 import { IconContext } from 'react-icons';
 import {
   AiOutlineFileText,
   AiFillGithub,
   AiFillLinkedin,
 } from 'react-icons/ai';
-import TabLink from '../../common/TabLink';
-import { bear } from './images';
+import TabLink from '../../common/TabLink/TabLink';
+import { head } from './images';
 import styles from './intro.module.css';
 
 const Icons = () => (
@@ -27,16 +26,17 @@ const Icons = () => (
 
 export default () => (
   <div className={styles.ctr}>
-    <div className={styles.headingCtr}>
-      <img className={styles.img} src={bear} />
-      <h1 className={styles.heading}>Hi, I'm Matthew</h1>
+    <img className={styles.img} src={head} />
+    <div className={styles.textCtr}>
+      <p className={styles.heading}>
+        Hey, I'm <span style={{ fontWeight: 'bold' }}>Matthew Guo.</span>
+      </p>
+      <p className={styles.text}>
+        I’m a Junior at Cornell Universtiy studying Computer Science. I like
+        creating websites, producing music, learning how to draw, and trying to
+        find time to do all of them.
+      </p>
       <Icons />
-    </div>
-    <div className={styles.bodyCtr}>
-      <p>I'm a junior at Cornell studying Computer Science.</p>
-      <p>I like working on projects that combine my interests with CS.</p>
-      <p>In my free time, I produce electronic music and learn how to draw.</p>
-      <p>Check out some things I've worked on below!</p>
     </div>
   </div>
 );

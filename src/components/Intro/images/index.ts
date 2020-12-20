@@ -1,1 +1,1 @@
-export { default as bear } from './bear.svg';
+export { default as head } from './websiteimg.jpg';
