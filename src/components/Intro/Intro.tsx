@@ -6,9 +6,9 @@ export default () => (
   <div className={styles.ctr}>
     <img className={styles.img} src={img} />
     <div className={styles.textCtr}>
-      <p className={styles.heading}>
+      <h1 className={styles.heading}>
         Hey, I'm <span style={{ fontWeight: 'bold' }}>Matthew</span> 🙃
-      </p>
+      </h1>
       <p className={styles.text}>
         I’m a junior at Cornell University studying Computer Science.
       </p>
