@@ -4,13 +4,17 @@
 
 .img {
   width: 45%;
+  filter: drop-shadow(-16px 16px 0px #000000);
+  margin-left: 16px;
+  margin-bottom: 16px;
 }
 
 .textCtr {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 2rem 0;
+  margin-left: 2rem;
 }
 
 .heading {
@@ -24,7 +28,7 @@
 .iconCtr {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 50%;
 }
 
 .icon {
