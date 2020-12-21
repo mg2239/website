@@ -1,5 +1,6 @@
 .ctr {
   display: flex;
+  align-items: center;
 }
 
 .divider {
@@ -11,13 +12,15 @@
 }
 
 .infoCtr {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   margin-left: 2rem;
+  padding: 1rem 0;
 }
 
 .title {
-  font-size: 2rem;
-  margin: 0;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.caption {
+  margin-bottom: 1rem;
 }

@@ -10,15 +10,24 @@ export interface ProjectType {
 
 export const projectData: ProjectType[] = [
   {
+    title: 'Carriage',
+    caption:
+      'A ride scheduling and management app for CULift. Created by Cornell Design and Tech Initiative, a project team on campus.',
+    img: carriage,
+    link: 'https://github.com/cornell-dti/carriage-web',
+    linkType: 'GitHub',
+  },
+  {
     title: 'wippy',
-    caption: 'Music sharing with expiring links.',
+    caption: 'Audio hosting with time-expiring links.',
     img: wippy,
     link: 'https://wippy.now.sh/',
     linkType: 'Website',
   },
   {
     title: 'Mandarin Helper',
-    caption: 'Flashcards for CHIN 1101/1102 students.',
+    caption:
+      'Generate flashcards or export Quizlet sets of CHIN 1101/1102 character sheets. ',
     img: mandarin,
     link: 'https://mandarin-helper.web.app/',
     linkType: 'Website',
@@ -29,12 +38,5 @@ export const projectData: ProjectType[] = [
     img: mixi,
     link: 'http://mixiforspotify.web.app/',
     linkType: 'Website',
-  },
-  {
-    title: 'Carriage',
-    caption: 'Ride scheduling app for CULift.',
-    img: carriage,
-    link: 'https://github.com/cornell-dti/carriage-web',
-    linkType: 'GitHub',
   },
 ];
