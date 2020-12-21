@@ -1,0 +1,23 @@
+.ctr {
+  display: flex;
+}
+
+.divider {
+  margin: 3rem auto;
+}
+
+.img {
+  width: 35%;
+}
+
+.infoCtr {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+}

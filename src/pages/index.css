@@ -38,15 +38,6 @@ h2 {
   font-weight: 400;
 }
 
-a {
-  transition-property: color, border-color;
-  transition: 0.2s linear;
-}
-
-a:hover {
-  color: #6b6d7a;
-}
-
 @media (min-width: 601px) and (max-width: 768px) {
   h2 {
     font-size: 1.25rem;
