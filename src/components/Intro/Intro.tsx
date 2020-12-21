@@ -29,12 +29,12 @@ export default () => (
     <img className={styles.img} src={head} />
     <div className={styles.textCtr}>
       <p className={styles.heading}>
-        Hey, I'm <span style={{ fontWeight: 'bold' }}>Matthew Guo.</span>
+        Hey, I'm <span style={{ fontWeight: 'bold' }}>Matthew.</span>
       </p>
       <p className={styles.text}>
-        I’m a Junior at Cornell Universtiy studying Computer Science. I like
-        creating websites, producing music, learning how to draw, and trying to
-        find time to do all of them.
+        I’m a junior at Cornell University studying Computer Science. I like
+        creating websites, producing music, and longboarding. Trying to find
+        time to do them all.
       </p>
       <Icons />
     </div>

@@ -1,1 +1,1 @@
-export { default as head } from './websiteimg.jpg';
+export { default as head } from './websiteimg.png';

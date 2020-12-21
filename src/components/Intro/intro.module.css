@@ -4,7 +4,6 @@
 
 .img {
   width: 45%;
-  max-width: 750px;
 }
 
 .textCtr {
@@ -15,20 +14,20 @@
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .text {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
 }
 
 .iconCtr {
   display: flex;
   justify-content: space-between;
-  width:  60%;
+  width: 40%;
 }
 
 .icon {
-  height: 3.5rem;
+  height: 2rem;
   width: auto;
 }
