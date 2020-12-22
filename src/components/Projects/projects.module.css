@@ -1,0 +1,47 @@
+.ctr {
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  margin: 3rem auto;
+}
+
+.img {
+  width: 35%;
+}
+
+.infoCtr {
+  margin-left: 2rem;
+  padding: 1rem 0;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.caption {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 625px) {
+  .ctr {
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  .img {
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+
+  .infoCtr {
+    margin: 0;
+    padding: 2rem 0 0;
+  }
+
+  .divider {
+    margin: 2rem auto;
+  }
+}

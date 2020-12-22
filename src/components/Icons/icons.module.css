@@ -1,0 +1,45 @@
+.iconCtr {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: black;
+  transition: 0.2s background;
+}
+
+.iconCtr:hover .iconBtn {
+  background-color: #a5a5a5;
+}
+
+.iconBtn:hover {
+  background-color: black !important;
+}
+
+.icon {
+  height: 1.5rem;
+  width: auto;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .iconCtr {
+    width: 120px;
+  }
+
+  .iconBtn {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .icon {
+    height: 1rem;
+  }
+}
