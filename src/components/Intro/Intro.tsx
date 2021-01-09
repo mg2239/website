@@ -21,8 +21,8 @@ export default () => (
         <a href="https://www.cameo.com/">Cameo</a>.
       </p>
       <p className={styles.text}>
-        In my free time, I like working on personal projects, producing music,
-        and watching movies.
+        In my free time, I like producing music, watching movies, and 
+        learning how to longboard.
       </p>
       <Icons />
     </div>
