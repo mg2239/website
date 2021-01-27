@@ -1,5 +1,5 @@
 import styles from './intro.module.css';
-import img from './img3.jpg';
+import img from './img.jpg';
 
 export default () => (
   <div className={styles.ctr}>
