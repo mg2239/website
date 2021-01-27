@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 160px;
+  margin-left: 0.5rem;
 }
 
 .iconBtn {
@@ -11,25 +12,20 @@
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
-  background-color: black;
   transition: 0.2s background;
 }
 
-.iconCtr:hover .iconBtn {
-  background-color: #a5a5a5;
-}
-
 .iconBtn:hover {
-  background-color: black !important;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .icon {
   height: 1.5rem;
   width: auto;
-  color: white;
+  color: black;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 625px) {
   .iconCtr {
     width: 120px;
   }
@@ -40,6 +36,6 @@
   }
 
   .icon {
-    height: 1rem;
+    height: 1.2rem;
   }
 }

@@ -11,6 +11,11 @@ export default () => (
     <link rel="apple-touch-icon" sizes="180x180" href={apple} />
     <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
     <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;700&family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/a13d223deb.js"
       crossOrigin="anonymous"

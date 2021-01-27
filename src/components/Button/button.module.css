@@ -8,7 +8,6 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   width: fit-content;
-  letter-spacing: 0.05em;
   font-weight: bold;
   transition: 0.2s background;
 }

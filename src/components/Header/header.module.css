@@ -1,0 +1,12 @@
+.ctr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+@media (max-width: 625px) {
+  .ctr {
+    padding: 1.5rem 0;
+  }
+}

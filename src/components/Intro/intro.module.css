@@ -1,39 +1,40 @@
 .ctr {
   display: flex;
+  align-items: center;
 }
 
 .img {
-  width: 45%;
+  width: 40%;
   filter: drop-shadow(-16px 16px 0px #000000);
   margin-left: 16px;
   margin-bottom: 16px;
 }
 
 .textCtr {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0;
   margin-left: 2rem;
 }
 
 .heading {
-  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 .text {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-@media (max-width: 1023px) {  
-  .text {
-    font-size: 1.25rem;
+.text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {  
+  .heading {
+    margin-bottom: 1.25rem;
   }
-}
 
-@media (max-width: 767px) {
   .text {
     font-size: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -52,7 +53,6 @@
 
   .textCtr {
     margin: 0;
-    height: 240px;
     text-align: center;
     align-items: center;
     padding: 2rem 0 0;
