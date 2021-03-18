@@ -12,7 +12,7 @@ export const projectData: ProjectType[] = [
   {
     title: 'Carriage',
     caption:
-      'Ride scheduling and management for CULift. Being created as part of Cornell Design and Tech Initiative, a project team on campus.',
+      'Ride scheduling, tracking, and management for CULift. Being created as part of Cornell Design and Tech Initiative, a project team on campus.',
     img: carriage,
     link: 'https://github.com/cornell-dti/carriage-web',
     linkType: 'GitHub',
