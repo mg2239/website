@@ -1,19 +1,66 @@
 import Button from '../Button/Button';
 import { projectData, ProjectType } from './data';
-import styles from './projects.module.css';
+import { createUseStyles } from 'react-jss';
 
-const Divider = () => <hr className={styles.divider} />;
+const useStyles = createUseStyles({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  divider: {
+    margin: '3rem auto',
+  },
+  img: {
+    width: '35%',
+  },
+  infoContainer: {
+    marginLeft: '2rem',
+    padding: '1rem 0',
+  },
+  title: {
+    marginBottom: '1rem',
+  },
+  caption: {
+    marginBottom: '1.2rem',
+  },
+  '@media (max-width: 625px)': {
+    container: {
+      flexDirection: 'column',
+      alignItems: 'initial',
+    },
+    img: {
+      width: '80%',
+      display: 'block',
+      margin: 'auto',
+    },
+    infoContainer: {
+      margin: '0',
+      padding: '2rem 0 0',
+    },
+    divider: {
+      margin: '2rem auto',
+    },
+  },
+});
 
-const Project = ({ caption, link, linkType, img, title }: ProjectType) => (
-  <div className={styles.ctr}>
-    <img src={img} alt={title} className={styles.img} />
-    <div className={styles.infoCtr}>
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.caption}>{caption}</p>
-      <Button to={link}>{linkType}</Button>
+const Divider = () => {
+  const styles = useStyles();
+  return <hr className={styles.divider} />;
+};
+
+const Project = ({ caption, link, linkType, img, title }: ProjectType) => {
+  const styles = useStyles();
+  return (
+    <div className={styles.container}>
+      <img src={img} alt={title} className={styles.img} />
+      <div className={styles.infoContainer}>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.caption}>{caption}</p>
+        <Button to={link}>{linkType}</Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default () => (
   <>
