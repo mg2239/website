@@ -12,7 +12,7 @@ const useStyles = createUseStyles({
       scrollBehavior: 'smooth',
     },
     body: {
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: 'Inter, sans-serif',
       margin: 'auto',
       width: '80%',
       maxWidth: '820px',
@@ -21,6 +21,7 @@ const useStyles = createUseStyles({
     h1: {
       fontSize: '2rem',
       letterSpacing: '-0.022em',
+      fontWeight: 600,
     },
     a: {
       margin: '0',
