@@ -3,7 +3,6 @@ import Header from '../components/Header/Header';
 import Intro from '../components/Intro/Intro';
 import Title from '../components/Title/Title';
 import Projects from '../components/Projects/Projects';
-import 'normalize.css';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -45,7 +44,7 @@ const useStyles = createUseStyles({
 });
 
 export default () => {
-  useStyles();
+  // useStyles();
   return (
     <>
       <Head />
