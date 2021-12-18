@@ -3,16 +3,23 @@ import Image from 'next/image';
 import { projectData, ProjectType } from './data';
 import React from 'react';
 
+const Project = ({ description, link, linkType, img, title }: ProjectType) => {
+  return (
+    <div className="flex">
+      <Image src={img} layout="intrinsic" />
+      <div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};
+
 export default () => {
   return (
     <>
       {projectData.map((project) => {
-        return (
-          <div>
-            <h1>{project.title}</h1>
-            <Image src={project.img} alt="" />
-          </div>
-        );
+        return <Project {...project} />;
       })}
     </>
   );
