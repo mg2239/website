@@ -1,14 +1,23 @@
 type TabProps = {
   onClick: () => void;
+  active: boolean;
 };
 
-export default ({ onClick, children }: React.PropsWithChildren<TabProps>) => {
+export default ({
+  onClick,
+  active,
+  children,
+}: React.PropsWithChildren<TabProps>) => {
   return (
-    <div className="mr-6 group">
+    <div className="mb-2 w-max">
       <p className="font-bold cursor-pointer" onClick={onClick}>
         {children}
       </p>
-      <span className="block w-full h-px transition-opacity bg-black opacity-0 group-hover:opacity-100" />
+      <span
+        className={`block w-full h-px bg-black opacity-0 ${
+          active && 'opacity-100'
+        }`}
+      />
     </div>
   );
 };

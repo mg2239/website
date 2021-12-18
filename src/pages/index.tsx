@@ -12,15 +12,23 @@ export default () => {
   return (
     <>
       <Head />
-      <div className="flex w-4/5 py-8 m-auto ">
+      <div className="flex w-4/5 pt-8 pb-12 m-auto max-w-7xl">
         <div className="fixed w-72">
           <Intro />
+          <Tab
+            active={currentTab === 'projects'}
+            onClick={() => setCurrentTab('projects')}
+          >
+            projects
+          </Tab>
+          <Tab
+            active={currentTab === 'music'}
+            onClick={() => setCurrentTab('music')}
+          >
+            music
+          </Tab>
         </div>
         <div className="flex-grow ml-80">
-          <div className="flex mb-4">
-            <Tab onClick={() => setCurrentTab('projects')}>projects</Tab>
-            <Tab onClick={() => setCurrentTab('music')}>music</Tab>
-          </div>
           {currentTab === 'projects' ? <Projects /> : <Music />}
         </div>
       </div>

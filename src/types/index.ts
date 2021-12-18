@@ -1,4 +1,4 @@
-export type Album = {
+export type AlbumType = {
   type: 'appears_on' | 'single';
   href: string;
   name: string;

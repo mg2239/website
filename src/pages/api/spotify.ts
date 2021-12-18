@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import queryString from 'query-string';
-import { Album } from '../../types';
+import { AlbumType } from '../../types';
 
 const client_id = process.env.CLIENT_ID!;
 const client_secret = process.env.CLIENT_SECRET!;
@@ -50,7 +50,7 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
           )
           .then((albumRes) => {
             const { items } = albumRes.data;
-            const albums: Album[] = items
+            const albums: AlbumType[] = items
               .map((album: any) => {
                 return {
                   type: album.album_group,
@@ -60,7 +60,8 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
                   image: album.images[1].url,
                 };
               })
-              .sort((a: Album, b: Album) =>
+              .filter((album: AlbumType) => album.release_date >= '2016-12-01')
+              .sort((a: AlbumType, b: AlbumType) =>
                 a.release_date > b.release_date ? -1 : 1,
               );
             res.send({ albums });
