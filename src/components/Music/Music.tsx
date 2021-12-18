@@ -13,12 +13,18 @@ type Err = {
 
 const Album = ({ href, name, image }: AlbumType) => {
   return (
-    <a href={href} className="relative flex group">
-      <Image src={image} width={300} height={300} layout="intrinsic" />
-      <div className="absolute flex items-center justify-center w-full h-full p-4 text-center transition-opacity bg-white opacity-0 group-hover:opacity-90">
-        <p className="text-xl font-bold">{name}</p>
-      </div>
-    </a>
+    <div className="flex flex-col">
+      <a href={href} className=" group">
+        <Image
+          src={image}
+          width={300}
+          height={300}
+          layout="intrinsic"
+          className="transition-opacity group-hover:opacity-50"
+        />
+      </a>
+      <p className="font-bold">{name}</p>
+    </div>
   );
 };
 
