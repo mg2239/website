@@ -1,17 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import useSWR from 'swr';
 import { AlbumType } from '../../types';
+import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
 
-type Data = {
-  albums: AlbumType[];
-};
+dayjs.extend(localizedFormat);
 
-type Err = {
-  err: string;
-};
-
-const Album = ({ href, name, image }: AlbumType) => {
+const Album = ({ href, name, image, release_date }: AlbumType) => {
   return (
     <div className="flex flex-col">
       <a href={href} className=" group">
@@ -24,35 +19,23 @@ const Album = ({ href, name, image }: AlbumType) => {
         />
       </a>
       <p className="font-bold">{name}</p>
+      <p className="text-xs font-ligh">{dayjs(release_date).format('LL')}</p>
     </div>
   );
 };
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+type AlbumPageProps = {
+  albums: AlbumType[];
+};
 
-export default () => {
-  const { data, error } = useSWR<Data, Err>('/api/spotify', fetcher);
-
-  if (!data) return null;
-  if (error) return <p>{error.err}</p>;
-
-  const { albums } = data;
-  // const singles = albums.filter(({ type }) => type === 'single');
-  // const features = albums.filter(({ type }) => type === 'appears_on');
-
+export default ({ albums }: AlbumPageProps) => {
   return (
     <div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-4">
         {albums.map((album) => (
           <Album {...album} />
         ))}
       </div>
-      {/* <h1 className="mb-2">Appears On</h1>
-      <div className="grid grid-cols-4 gap-2">
-        {features.map((album) => (
-          <Album {...album} />
-        ))}
-      </div> */}
     </div>
   );
 };

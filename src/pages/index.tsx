@@ -1,10 +1,20 @@
+import { GetServerSideProps } from 'next';
 import Head from '../components/Head/Head';
 import Intro from '../components/Intro/Intro';
 import Music from '../components/Music/Music';
+import { AlbumType } from '../types';
+import { getAlbums } from '../util/spotify';
 
-type TabType = 'projects' | 'music';
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { albums } = await getAlbums();
+  return { props: { albums } };
+};
 
-export default () => {
+type HomePageProps = {
+  albums: AlbumType[];
+};
+
+export default ({ albums }: HomePageProps) => {
   return (
     <>
       <Head />
@@ -13,7 +23,7 @@ export default () => {
           <Intro />
         </div>
         <div className="flex-grow ml-80">
-          <Music />
+          <Music albums={albums} />
         </div>
       </div>
     </>
