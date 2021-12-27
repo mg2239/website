@@ -15,7 +15,7 @@ export default () => (
     <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </Head>

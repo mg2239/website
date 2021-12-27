@@ -18,13 +18,11 @@ export default ({ albums }: HomePageProps) => {
   return (
     <>
       <Head />
-      <div className="flex w-4/5 pt-8 pb-12 m-auto max-w-7xl">
-        <div className="fixed w-72">
+      <div className="flex flex-col w-4/5 pt-8 pb-12 m-auto max-w-7xl lg:flex-row">
+        <div className="lg:w-1/4 lg:mr-8">
           <Intro />
         </div>
-        <div className="flex-grow ml-80">
-          <Music albums={albums} />
-        </div>
+        <Music albums={albums} />
       </div>
     </>
   );

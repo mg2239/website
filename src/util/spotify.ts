@@ -45,36 +45,33 @@ export const getAlbums = () => {
             .get(
               queryString.stringifyUrl({
                 url:
-                  'https://api.spotify.com/v1/artists/7kC7D533ouUtVaakpKJgoc/albums',
+                  'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
                 query: {
-                  limit: 20,
-                  offset: 0,
+                  limit: 50,
+                  // fields: 'items(track(album))',
                 },
               }),
               auth,
             )
             .then((albumRes) => {
               const { items } = albumRes.data;
-              const albums: AlbumType[] = items
-                .map((album: any) => {
+              const albums: AlbumType[] = items.map(
+                ({ track }: { track: any }) => {
+                  console.log(track);
                   return {
-                    type: album.album_group,
-                    href: album.external_urls.spotify,
-                    name: album.name,
-                    release_date: album.release_date,
-                    image: album.images[1].url,
+                    href: track.album.external_urls.spotify,
+                    name: track.album.name,
+                    release_date: track.album.release_date,
+                    image: track.album.images[1].url,
                   };
-                })
-                .filter(
-                  (album: AlbumType) => album.release_date >= '2016-12-01',
-                )
-                .sort((a: AlbumType, b: AlbumType) =>
-                  a.release_date > b.release_date ? -1 : 1,
-                );
+                },
+              );
+              albums.reverse();
               resolve({ albums });
-            });
+            })
+            .catch(console.log);
         })
-        .catch(() => reject({ err: 'An error occured' }));
+        .catch(console.log);
     } else {
       reject({ err: 'No env variables' });
     }
