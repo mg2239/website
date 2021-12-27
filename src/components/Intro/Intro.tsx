@@ -1,82 +1,44 @@
-import img from './img.jpg';
-import { createUseStyles } from 'react-jss';
+import React from 'react';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { BsFillFileTextFill, BsGithub } from 'react-icons/bs';
 
-const useStyles = createUseStyles({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  img: {
-    width: '40%',
-    filter: 'drop-shadow(-16px 16px 0px #000000)',
-    marginLeft: '16px',
-    marginBottom: '16px',
-  },
-  textContainer: {
-    marginLeft: '2rem',
-  },
-  heading: {
-    marginBottom: '1.5rem',
-  },
-  text: {
-    fontSize: '1.25rem',
-    marginBottom: '1.25rem',
-    '&:last_child': {
-      marginBottom: '0',
-    },
-  },
-  '@media (max-width: 900px)': {
-    heading: {
-      marginBottom: '1.25rem',
-    },
-    text: {
-      fontSize: '1rem',
-      marginBottom: '1rem',
-    },
-  },
-  '@media (max-width: 625px)': {
-    container: {
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    img: {
-      width: '60%',
-      filter: 'drop-shadow(-12px 12px 0px #000000)',
-      marginLeft: '12px',
-      marginBottom: '12px',
-    },
-    textContainer: {
-      margin: '0',
-      textAlign: 'center',
-      alignItems: 'center',
-      padding: '2rem 0 0',
-    },
-  },
-});
+const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
+  return (
+    <a
+      className="block p-2.5 mr-3 text-white transition-colors bg-black rounded-full hover:bg-gray-700"
+      href={to}
+    >
+      {children}
+    </a>
+  );
+};
+
+const Links = () => {
+  return (
+    <div className="flex justify-center lg:justify-start">
+      <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
+        <BsFillFileTextFill />
+      </Link>
+      <Link to="https://github.com/mg2239">
+        <BsGithub />
+      </Link>
+      <Link to="https://www.linkedin.com/in/mg2239/">
+        <FaLinkedinIn />
+      </Link>
+    </div>
+  );
+};
 
 export default () => {
-  const styles = useStyles();
   return (
-    <div className={styles.container}>
-      <img className={styles.img} src={img} />
-      <div className={styles.textContainer}>
-        <h1 className={styles.heading}>Hello! 🙃</h1>
-        <p className={styles.text}>
-          I’m Matthew, a junior at Cornell University studying Computer Science.
-        </p>
-        <p className={styles.text}>
-          I previously interned at{' '}
-          <a href="https://www.linkedin.com/company/bloom-university/about/">
-            Bloom
-          </a>
-          , and am currently interning at{' '}
-          <a href="https://www.cameo.com/">Cameo</a>.
-        </p>
-        <p className={styles.text}>
-          When I'm not developing, I'm usually producing music, watching movies,
-          or learning guitar.
-        </p>
+    <div className="mb-8 text-center lg:text-left">
+      <div className="mb-8 lg:w-max">
+        <h1 className="mb-2">matthew guo</h1>
+        <Links />
       </div>
+      <p className="mb-2">web dev and music producer</p>
+      <p className="mb-2">incoming swe @ cameo</p>
+      <p>cs @ cornell '22</p>
     </div>
   );
 };

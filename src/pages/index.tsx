@@ -1,58 +1,29 @@
+import { GetServerSideProps } from 'next';
 import Head from '../components/Head/Head';
-import Header from '../components/Header/Header';
 import Intro from '../components/Intro/Intro';
-import Title from '../components/Title/Title';
-import Projects from '../components/Projects/Projects';
-import 'normalize.css';
-import { createUseStyles } from 'react-jss';
+import Music from '../components/Music/Music';
+import { AlbumType } from '../types';
+import { getAlbums } from '../util/spotify';
 
-const useStyles = createUseStyles({
-  '@global': {
-    html: {
-      scrollBehavior: 'smooth',
-    },
-    body: {
-      fontFamily: 'Inter, sans-serif',
-      margin: 'auto',
-      width: '80%',
-      maxWidth: '820px',
-      paddingBottom: '5rem',
-    },
-    h1: {
-      fontSize: '2rem',
-      letterSpacing: '-0.022em',
-      fontWeight: 600,
-    },
-    a: {
-      margin: '0',
-      color: 'black',
-    },
-    p: {
-      margin: '0',
-      color: 'black',
-    },
-    '@media (max-width: 1023px)': {
-      h1: {
-        fontSize: '1.75rem',
-      },
-    },
-    '@media (max-width: 625px)': {
-      h1: {
-        fontSize: '1.5rem',
-      },
-    },
-  },
-});
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { albums } = await getAlbums();
+  return { props: { albums } };
+};
 
-export default () => {
-  useStyles();
+type HomePageProps = {
+  albums: AlbumType[];
+};
+
+export default ({ albums }: HomePageProps) => {
   return (
     <>
       <Head />
-      <Header />
-      <Intro />
-      <Title title="Projects" />
-      <Projects />
+      <div className="flex flex-col w-4/5 pt-8 pb-12 m-auto max-w-7xl lg:flex-row">
+        <div className="lg:w-1/4 lg:mr-8">
+          <Intro />
+        </div>
+        <Music albums={albums} />
+      </div>
     </>
   );
 };
