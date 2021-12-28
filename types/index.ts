@@ -1,5 +1,5 @@
 export type AlbumType = {
-  href: string;
+  link: string;
   name: string;
   release_date: string;
   image: string;

@@ -6,10 +6,10 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 
 dayjs.extend(localizedFormat);
 
-const Album = ({ href, name, image, release_date }: AlbumType) => {
+const Album = ({ link, name, image, release_date }: AlbumType) => {
   return (
     <div className="m-auto">
-      <a href={href} className="group">
+      <a href={link} className="group">
         <Image
           src={image}
           width={300}
@@ -32,7 +32,7 @@ export default ({ albums }: AlbumPageProps) => {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {albums.map((album) => (
-        <Album {...album} />
+        <Album key={album.name} {...album} />
       ))}
     </div>
   );
