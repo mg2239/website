@@ -4,7 +4,7 @@ import { AiFillFileText, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
     <a
-      className="block p-2.5 mr-3 text-xl text-white dark:text-slate-900 bg-black hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-300 rounded-full transition-colors"
+      className="block p-2.5 text-xl text-white dark:text-slate-900 bg-black hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-300 rounded-full transition-colors"
       href={to}
     >
       {children}
@@ -14,7 +14,7 @@ const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
 
 const Links = () => {
   return (
-    <div className="flex justify-center lg:justify-start">
+    <div className="flex justify-between m-auto w-36 lg:m-0">
       <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
         <AiFillFileText />
       </Link>
