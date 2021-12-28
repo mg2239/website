@@ -11,11 +11,12 @@ const Album = ({ link, name, image, release_date }: AlbumType) => {
     <div className="m-auto">
       <a href={link} className="group">
         <Image
+          alt=""
           src={image}
           width={300}
           height={300}
           layout="intrinsic"
-          className="transition-opacity rounded-md group-hover:opacity-50"
+          className="rounded-md group-hover:opacity-50 transition-opacity"
         />
       </a>
       <p className="font-bold">{name}</p>
@@ -28,7 +29,7 @@ type AlbumPageProps = {
   albums: AlbumType[];
 };
 
-export default ({ albums }: AlbumPageProps) => {
+const Music = ({ albums }: AlbumPageProps) => {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {albums.map((album) => (
@@ -37,3 +38,5 @@ export default ({ albums }: AlbumPageProps) => {
     </div>
   );
 };
+
+export default Music;

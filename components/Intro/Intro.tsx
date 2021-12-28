@@ -1,11 +1,10 @@
 import React from 'react';
-import { FaLinkedinIn } from 'react-icons/fa';
-import { BsFillFileTextFill, BsGithub } from 'react-icons/bs';
+import { AiFillFileText, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
     <a
-      className="block p-2.5 mr-3 text-white transition-colors bg-black rounded-full hover:bg-gray-700"
+      className="block p-2.5 mr-3 text-xl text-white dark:text-slate-900 bg-black hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-300 rounded-full transition-colors"
       href={to}
     >
       {children}
@@ -17,19 +16,19 @@ const Links = () => {
   return (
     <div className="flex justify-center lg:justify-start">
       <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
-        <BsFillFileTextFill />
+        <AiFillFileText />
       </Link>
       <Link to="https://github.com/mg2239">
-        <BsGithub />
+        <AiFillGithub />
       </Link>
       <Link to="https://www.linkedin.com/in/mg2239/">
-        <FaLinkedinIn />
+        <AiFillLinkedin />
       </Link>
     </div>
   );
 };
 
-export default () => {
+const Intro = () => {
   return (
     <div className="mb-8 text-center lg:text-left">
       <div className="mb-8 lg:w-max">
@@ -38,7 +37,9 @@ export default () => {
       </div>
       <p className="mb-2">web dev and music producer</p>
       <p className="mb-2">incoming swe @ cameo</p>
-      <p>cs @ cornell '22</p>
+      <p>cs @ cornell &apos;22</p>
     </div>
   );
 };
+
+export default Intro;
