@@ -31,8 +31,6 @@ const Links = () => {
 };
 
 const Intro = () => {
-  const { enabled } = useDarkMode();
-
   return (
     <div className="mb-8 text-center lg:text-left">
       <div className="mb-8 lg:w-max">
