@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import React from 'react';
 import { AiFillFileText, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { useDarkMode } from '../../context/darkMode';
 
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
@@ -29,9 +31,18 @@ const Links = () => {
 };
 
 const Intro = () => {
+  const { enabled } = useDarkMode();
+
   return (
     <div className="mb-8 text-center lg:text-left">
       <div className="mb-8 lg:w-max">
+        <Image
+          src="/face.png"
+          alt="face"
+          width={144}
+          height={144}
+          className="invert-0 dark:invert transition-all"
+        />
         <h1 className="mb-2">matthew guo</h1>
         <Links />
       </div>
