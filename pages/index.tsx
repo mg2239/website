@@ -18,16 +18,13 @@ type HomeProps = {
 
 const Home = ({ albums }: HomeProps) => {
   return (
-    <DarkModeProvider>
+    <>
       <Head />
-      <div className="flex flex-col pt-8 pb-12 m-auto w-4/5 max-w-7xl lg:flex-row">
-        <div className="lg:mr-8 lg:w-1/4">
-          <Intro />
-        </div>
+      <div className="flex flex-col pt-16 pb-16 m-auto sm:pr-2 sm:pl-2 sm:max-w-screen-md">
+        <Intro />
         <Music albums={albums} />
       </div>
-      <DarkModeToggle />
-    </DarkModeProvider>
+    </>
   );
 };
 

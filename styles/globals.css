@@ -4,9 +4,7 @@
 
 @layer base {
   body {
-    @apply dark:bg-slate-900;
-    @apply dark:text-white;
-    @apply transition-colors;
+    @apply text-gray-800
   }
   h1 {
     @apply text-3xl;
@@ -19,9 +17,10 @@
 }
 
 body {
-  font-family: 'Be Vietnam Pro';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 html {
+  background-color: #fdfdfd;
   scroll-behavior: smooth;
 }

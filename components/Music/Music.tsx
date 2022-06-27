@@ -1,26 +1,42 @@
 import React from 'react';
+import LinesEllipsis from 'react-lines-ellipsis';
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
 import Image from 'next/image';
-import { AlbumType } from '../../types';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import { AlbumType } from '../../types';
+import { useWindowWidth } from '../../context/useWindowWidth';
 
 dayjs.extend(localizedFormat);
 
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+
 const Album = ({ link, name, image, release_date }: AlbumType) => {
+  const { isSmall } = useWindowWidth();
+
   return (
     <div className="m-auto">
-      <a href={link} className="group">
+      <a href={link} className="group flex">
         <Image
           alt=""
           src={image}
           width={300}
           height={300}
           layout="intrinsic"
-          className="rounded-md group-hover:opacity-50 transition-opacity"
+          className="block group-hover:opacity-50 transition-opacity"
         />
       </a>
-      <p className="font-bold">{name}</p>
-      <p className="text-xs">{dayjs(release_date).format('LL')}</p>
+      {!isSmall && (
+        <>
+          <ResponsiveEllipsis
+            text={name}
+            basedOn="letters"
+            maxLine={1}
+            className="mt-1 font-semibold"
+          />
+          <p className="text-xs">{dayjs(release_date).format('ll')}</p>
+        </>
+      )}
     </div>
   );
 };
@@ -31,7 +47,7 @@ type AlbumPageProps = {
 
 const Music = ({ albums }: AlbumPageProps) => {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-3 gap-2 sm:gap-6">
       {albums.map((album) => (
         <Album key={album.name} {...album} />
       ))}

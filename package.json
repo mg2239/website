@@ -14,6 +14,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.3.1",
+    "react-lines-ellipsis": "^0.15.1",
     "typescript": "^4.5.2"
   },
   "scripts": {
@@ -23,6 +24,7 @@
     "lint": "next lint --fix"
   },
   "devDependencies": {
+    "@types/react-lines-ellipsis": "^0.15.1",
     "autoprefixer": "^10.4.0",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
