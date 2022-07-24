@@ -6,7 +6,7 @@ import { Song } from '../../types';
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
     <a
-      className="inline mr-2 text-sm font-semibold hover:text-gray-400 rounded-full transition-colors sm:mr-4 sm:text-base"
+      className="inline mr-2 text-sm font-semibold hover:text-gray-500 rounded-full transition-colors sm:mr-4 sm:text-base"
       href={to}
     >
       {children}
@@ -26,7 +26,19 @@ const Links = () => {
   );
 };
 
-const Text = ({ song }: { song: Song }) => {
+const Text = ({ song: initSong }: { song: Song }) => {
+  const [song, setSong] = useState<Song>(initSong);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch('/api/currentlyListening')
+        .then((data) => data.json())
+        .then((song) => setSong(song));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="text-sm sm:text-base">
       <p>web dev and music producer</p>
@@ -34,7 +46,7 @@ const Text = ({ song }: { song: Song }) => {
       <p>cs @ cornell &apos;22</p>
       {song && song.is_playing && (
         <p>
-          currently listening: <Link to={song.link}>{song.title}</Link>
+          currently listening to <Link to={song.link}>{song.title}</Link>
         </p>
       )}
     </div>

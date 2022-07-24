@@ -113,7 +113,7 @@ export const getCurrentlyListening = async () => {
         } = playingRes.data.item;
         const artist = artists[0].name;
         resolve({
-          title: `${artist} - ${name}`,
+          title: `${artist} - ${name}`.toLowerCase(),
           link: spotify,
           is_playing,
         });
@@ -121,7 +121,7 @@ export const getCurrentlyListening = async () => {
         reject({ err: 'No song' });
       }
     } catch (err: any) {
-      reject({ err });
+      reject({ err: err.message });
     }
   });
 };
