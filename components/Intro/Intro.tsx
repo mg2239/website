@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useWindowWidth } from '../../context/useWindowWidth';
+import { Song } from '../../types';
 
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
     <a
-      className="inline-block mr-2 text-sm hover:text-gray-400 rounded-full transition-colors sm:mr-4 sm:text-base"
+      className="inline mr-2 text-sm font-semibold hover:text-gray-400 rounded-full transition-colors sm:mr-4 sm:text-base"
       href={to}
     >
       {children}
@@ -15,7 +16,7 @@ const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
 
 const Links = () => {
   return (
-    <div className="mb-2 font-semibold">
+    <div className="mb-2">
       <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
         resume
       </Link>
@@ -25,17 +26,22 @@ const Links = () => {
   );
 };
 
-const Text = () => {
+const Text = ({ song }: { song: Song }) => {
   return (
     <div className="text-sm sm:text-base">
       <p>web dev and music producer</p>
       <p>swe @ cameo</p>
       <p>cs @ cornell &apos;22</p>
+      {song && song.is_playing && (
+        <p>
+          currently listening: <Link to={song.link}>{song.title}</Link>
+        </p>
+      )}
     </div>
   );
 };
 
-const Intro = () => {
+const Intro = ({ song }: { song: Song }) => {
   const { isSmall } = useWindowWidth();
   const size = isSmall ? 80 : 140;
 
@@ -53,12 +59,12 @@ const Intro = () => {
           />
         </div>
         <div className="col-span-5 sm:col-span-2">
-          <h1 className="mb-1 sm:mb-2 font-light">matthew guo</h1>
+          <h1 className="mb-1 font-light sm:mb-2">matthew guo</h1>
           <Links />
-          {!isSmall && <Text />}
+          {!isSmall && <Text song={song} />}
         </div>
       </div>
-      {isSmall && <Text />}
+      {isSmall && <Text song={song} />}
     </div>
   );
 };

@@ -3,7 +3,6 @@
   "description": "",
   "version": "1.0.0",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@types/node": "^14.0.14",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

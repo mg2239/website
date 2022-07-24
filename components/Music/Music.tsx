@@ -4,14 +4,14 @@ import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
-import { AlbumType } from '../../types';
+import { Album } from '../../types';
 import { useWindowWidth } from '../../context/useWindowWidth';
 
 dayjs.extend(localizedFormat);
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
-const Album = ({ link, name, image, release_date }: AlbumType) => {
+const Album = ({ link, name, image, release_date }: Album) => {
   const { isSmall } = useWindowWidth();
 
   return (
@@ -42,7 +42,7 @@ const Album = ({ link, name, image, release_date }: AlbumType) => {
 };
 
 type AlbumPageProps = {
-  albums: AlbumType[];
+  albums: Album[];
 };
 
 const Music = ({ albums }: AlbumPageProps) => {
