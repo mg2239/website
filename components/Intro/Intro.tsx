@@ -33,7 +33,9 @@ const Text = ({ song: initSong }: { song: Song }) => {
     const interval = setInterval(() => {
       fetch('/api/currentlyListening')
         .then((data) => data.json())
-        .then((song) => setSong(song));
+        .then((song) => {
+          setSong(song);
+        });
     }, 5000);
 
     return () => clearInterval(interval);

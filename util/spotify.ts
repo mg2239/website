@@ -118,10 +118,13 @@ export const getCurrentlyListening = async () => {
           is_playing,
         });
       } else {
-        reject('No song');
+        console.log(playingRes);
+        console.log('playingRes has no data');
+        reject({ is_playing: false });
       }
     } catch (err: any) {
-      reject(err);
+      console.log(err);
+      reject({ is_playing: false });
     }
   });
 };
