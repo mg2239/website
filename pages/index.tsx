@@ -8,7 +8,12 @@ import { Song } from '../types';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { albums } = await getAlbums();
-  const song = await getCurrentlyListening();
+  let song;
+  try {
+    song = await getCurrentlyListening();
+  } catch (err) {
+    song = { is_playing: false };
+  }
   return { props: { albums, song } };
 };
 
