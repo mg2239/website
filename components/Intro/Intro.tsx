@@ -1,6 +1,7 @@
+import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { useWindowWidth } from '../../context/useWindowWidth';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import { Song } from '../../types';
 
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
@@ -14,30 +15,13 @@ const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   );
 };
 
-const Links = () => {
-  return (
-    <div className="mb-2">
-      <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
-        resume
-      </Link>
-      <Link to="https://github.com/mg2239">github</Link>
-      <Link to="https://www.linkedin.com/in/mg2239/">linkedin</Link>
-    </div>
-  );
-};
-
-const Text = ({ song: initSong }: { song: Song }) => {
-  const [song, setSong] = useState<Song>(initSong);
+const Text = (props: { song: Song }) => {
+  const [song, setSong] = useState<Song>(props.song);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch('/api/currentlyListening')
-        .then((data) => data.json())
-        .then((song) => {
-          setSong(song);
-        });
+      axios.get('/api/currentlyListening').then(({ data }) => setSong(data));
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -46,7 +30,7 @@ const Text = ({ song: initSong }: { song: Song }) => {
       <p>web dev and music producer</p>
       <p>swe @ cameo</p>
       <p>cs @ cornell &apos;22</p>
-      {song && song.is_playing && (
+      {song.isPlaying && (
         <p>
           currently listening to <Link to={song.link}>{song.title}</Link>
         </p>
@@ -56,8 +40,8 @@ const Text = ({ song: initSong }: { song: Song }) => {
 };
 
 const Intro = ({ song }: { song: Song }) => {
-  const { isSmall } = useWindowWidth();
-  const size = isSmall ? 80 : 140;
+  const isMobile = useIsMobile();
+  const size = isMobile ? 80 : 140;
 
   return (
     <div className="mr-4 mb-8 ml-4 sm:mr-0 sm:mb-16 sm:ml-0">
@@ -74,11 +58,17 @@ const Intro = ({ song }: { song: Song }) => {
         </div>
         <div className="col-span-5 sm:col-span-2">
           <h1 className="mb-1 font-light sm:mb-2">matthew guo</h1>
-          <Links />
-          {!isSmall && <Text song={song} />}
+          <div className="mb-2">
+            <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
+              resume
+            </Link>
+            <Link to="https://github.com/mg2239">github</Link>
+            <Link to="https://www.linkedin.com/in/mg2239/">linkedin</Link>
+          </div>
+          {!isMobile && <Text song={song} />}
         </div>
       </div>
-      {isSmall && <Text song={song} />}
+      {isMobile && <Text song={song} />}
     </div>
   );
 };

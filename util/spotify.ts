@@ -5,10 +5,6 @@ import { Album, Song } from '../types';
 const client_id = process.env.CLIENT_ID!;
 const client_secret = process.env.CLIENT_SECRET!;
 
-type AlbumPayload = {
-  albums: Album[];
-};
-
 export const getAlbums = () => {
   const headers = {
     headers: {
@@ -25,13 +21,13 @@ export const getAlbums = () => {
     grant_type: 'client_credentials',
   };
 
-  return new Promise<AlbumPayload>(async (resolve, reject) => {
+  return new Promise<Album[]>(async (resolve, reject) => {
     if (client_id && client_secret) {
       try {
         const tokenRes = await axios.post(
           'https://accounts.spotify.com/api/token',
           queryString.stringify(data),
-          headers,
+          headers
         );
         const { access_token } = tokenRes.data;
         const auth = {
@@ -44,24 +40,23 @@ export const getAlbums = () => {
             url: 'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
             query: {
               limit: 50,
-              // fields: 'items(track(album))',
             },
           }),
-          auth,
+          auth
         );
-        const { items } = albumRes.data;
-        const albums: Album[] = items.map(({ track }: { track: any }) => {
+        const { items }: { items: any[] } = albumRes.data;
+        const albums: Album[] = items.map(({ track }) => {
           return {
             link: track.album.external_urls.spotify,
             name: track.album.name,
-            release_date: track.album.release_date,
+            releaseDate: track.album.release_date,
             image: track.album.images[1].url,
           };
         });
         albums.reverse();
-        resolve({ albums });
+        resolve(albums);
       } catch (err) {
-        console.log(err);
+        reject({ err });
       }
     } else {
       reject({ err: 'No env variables' });
@@ -93,7 +88,7 @@ export const getCurrentlyListening = async () => {
       const tokenRes = await axios.post(
         'https://accounts.spotify.com/api/token',
         queryString.stringify(data),
-        headers,
+        headers
       );
       const { access_token } = tokenRes.data;
       const playingRes = await axios.get(
@@ -102,7 +97,7 @@ export const getCurrentlyListening = async () => {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
-        },
+        }
       );
       if (playingRes.data) {
         const { is_playing } = playingRes.data;
@@ -115,16 +110,13 @@ export const getCurrentlyListening = async () => {
         resolve({
           title: `${artist} - ${name}`.toLowerCase(),
           link: spotify,
-          is_playing,
+          isPlaying: is_playing,
         });
       } else {
-        console.log(playingRes);
-        console.log('playingRes has no data');
         reject({ is_playing: false });
       }
-    } catch (err: any) {
-      console.log(err);
-      reject({ is_playing: false });
+    } catch (err) {
+      reject({ err });
     }
   });
 };

@@ -1,19 +1,15 @@
 import { GetServerSideProps } from 'next';
+import Head from '../components/Head/Head';
 import Intro from '../components/Intro/Intro';
 import Music from '../components/Music/Music';
-import { Album } from '../types';
+import { Album, Song } from '../types';
 import { getAlbums, getCurrentlyListening } from '../util/spotify';
-import Head from '../components/Head/Head';
-import { Song } from '../types';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { albums } = await getAlbums();
-  let song;
-  try {
-    song = await getCurrentlyListening();
-  } catch (err) {
-    song = { is_playing: false };
-  }
+  const albums = await getAlbums().catch(() => []);
+  const song = await getCurrentlyListening().catch(() => ({
+    isPlaying: false,
+  }));
   return { props: { albums, song } };
 };
 
