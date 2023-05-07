@@ -102,13 +102,16 @@ export const getCurrentlyListening = async () => {
       if (playingRes.data) {
         const { is_playing } = playingRes.data;
         const {
+          album,
           artists,
           name,
           external_urls: { spotify },
         } = playingRes.data.item;
-        const artist = artists[0].name;
         resolve({
-          title: `${artist} - ${name}`.toLowerCase(),
+          title: name,
+          artists: artists.map((artist: any) => artist.name).join(', '),
+          albumArt: album.images[2].url,
+          albumName: album.name,
           link: spotify,
           isPlaying: is_playing,
         });

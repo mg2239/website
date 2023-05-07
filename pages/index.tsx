@@ -4,13 +4,13 @@ import { Head } from '../components/Head/Head';
 import { Album, Song } from '../types';
 import { getAlbums, getCurrentlyListening } from '../util/spotify';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export async function getServerSideProps() {
   const albums = await getAlbums().catch(() => []);
   const song = await getCurrentlyListening().catch(() => ({
     isPlaying: false,
   }));
   return { props: { albums, song } };
-};
+}
 
 type HomeProps = {
   albums: Album[];
@@ -19,7 +19,7 @@ type HomeProps = {
 
 function Home({ albums, song }: HomeProps) {
   return (
-    <div className="flex justify-center px-4 py-8">
+    <div className="flex justify-center  px-4 py-8">
       <Head />
       <Card song={song} />
     </div>

@@ -9,7 +9,10 @@ export type Song =
   | { isPlaying: false }
   | {
       isPlaying: true;
-      title: string;
+      albumArt: string;
+      albumName: string;
+      artists: string;
       link: string;
       progress: string;
+      title: string;
     };
