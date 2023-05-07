@@ -2,11 +2,11 @@ import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import Image from 'next/image';
 import React from 'react';
-import { Album as AlbumType } from '../../types';
+import { Album as AlbumType } from '../../../types';
 
 dayjs.extend(localizedFormat);
 
-const Album = ({ link, name, image, releaseDate }: AlbumType) => {
+function Album({ link, name, image, releaseDate }: AlbumType) {
   return (
     <div className="m-auto">
       <a href={link} className="group flex">
@@ -15,8 +15,7 @@ const Album = ({ link, name, image, releaseDate }: AlbumType) => {
           src={image}
           width={300}
           height={300}
-          layout="intrinsic"
-          className="block group-hover:opacity-50 transition-opacity"
+          className="block transition-opacity group-hover:opacity-50"
         />
       </a>
       <div className="hidden sm:block">
@@ -25,13 +24,13 @@ const Album = ({ link, name, image, releaseDate }: AlbumType) => {
       </div>
     </div>
   );
-};
+}
 
 type MusicProps = {
   albums: AlbumType[];
 };
 
-const Music = ({ albums }: MusicProps) => {
+function Music({ albums }: MusicProps) {
   return (
     <div className="grid grid-cols-3 gap-2 sm:gap-6">
       {albums.map((album) => (
@@ -39,6 +38,6 @@ const Music = ({ albums }: MusicProps) => {
       ))}
     </div>
   );
-};
+}
 
 export default Music;

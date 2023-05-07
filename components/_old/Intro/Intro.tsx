@@ -1,21 +1,21 @@
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { useIsMobile } from '../../hooks/useIsMobile';
-import { Song } from '../../types';
+import { useIsMobile } from '../../../hooks/useIsMobile';
+import { Song } from '../../../types';
 
-const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
+function Link({ to, children }: React.PropsWithChildren<{ to: string }>) {
   return (
     <a
-      className="inline mr-2 text-sm font-semibold hover:text-gray-500 rounded-full transition-colors sm:mr-4 sm:text-base"
+      className="mr-2 inline rounded-full text-sm font-semibold transition-colors hover:text-gray-500 sm:mr-4 sm:text-base"
       href={to}
     >
       {children}
     </a>
   );
-};
+}
 
-const Text = (props: { song: Song }) => {
+function Text(props: { song: Song }) {
   const [song, setSong] = useState<Song>(props.song);
 
   useEffect(() => {
@@ -37,23 +37,22 @@ const Text = (props: { song: Song }) => {
       )}
     </div>
   );
-};
+}
 
-const Intro = ({ song }: { song: Song }) => {
+function Intro({ song }: { song: Song }) {
   const isMobile = useIsMobile();
   const size = isMobile ? 80 : 140;
 
   return (
-    <div className="mr-4 mb-8 ml-4 sm:mr-0 sm:mb-16 sm:ml-0">
-      <div className="flex grid-cols-6 gap-1 mb-2 sm:grid sm:grid-cols-3 sm:gap-6">
-        <div className="mr-5 sm:flex sm:justify-center sm:m-0">
+    <div className="mb-8 ml-4 mr-4 sm:mb-16 sm:ml-0 sm:mr-0">
+      <div className="mb-2 flex grid-cols-6 gap-1 sm:grid sm:grid-cols-3 sm:gap-6">
+        <div className="mr-5 sm:m-0 sm:flex sm:justify-center">
           <Image
             src="/face.png"
             alt="face"
-            layout="fixed"
             width={size}
             height={size}
-            className="invert-0 dark:invert transition-all"
+            className="block"
           />
         </div>
         <div className="col-span-5 sm:col-span-2">
@@ -71,6 +70,6 @@ const Intro = ({ song }: { song: Song }) => {
       {isMobile && <Text song={song} />}
     </div>
   );
-};
+}
 
 export default Intro;

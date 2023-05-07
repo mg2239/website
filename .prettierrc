@@ -1,4 +1,9 @@
 {
   "singleQuote": true,
-  "organizeImportsSkipDestructiveCodeActions": true
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "pluginSearchDirs": false
 }

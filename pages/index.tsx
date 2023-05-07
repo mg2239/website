@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next';
-import Head from '../components/Head/Head';
-import Intro from '../components/Intro/Intro';
-import Music from '../components/Music/Music';
+import { Card } from '../components/Card/Card';
+import { Head } from '../components/Head/Head';
 import { Album, Song } from '../types';
 import { getAlbums, getCurrentlyListening } from '../util/spotify';
 
@@ -18,16 +17,13 @@ type HomeProps = {
   song: Song;
 };
 
-const Home = ({ albums, song }: HomeProps) => {
+function Home({ albums, song }: HomeProps) {
   return (
-    <>
+    <div className="flex justify-center px-4 py-8">
       <Head />
-      <div className="flex flex-col pt-8 pb-8 m-auto sm:pt-16 sm:pr-2 sm:pb-16 sm:pl-2 sm:max-w-screen-md">
-        <Intro song={song} />
-        <Music albums={albums} />
-      </div>
-    </>
+      <Card song={song} />
+    </div>
   );
-};
+}
 
 export default Home;
