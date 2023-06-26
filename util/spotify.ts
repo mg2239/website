@@ -1,11 +1,11 @@
 import axios from 'axios';
 import queryString from 'query-string';
-import { Album, Song } from '../types';
+import { Release, Song } from '../types';
 
 const client_id = process.env.CLIENT_ID!;
 const client_secret = process.env.CLIENT_SECRET!;
 
-export const getAlbums = () => {
+export const getReleases = () => {
   const headers = {
     headers: {
       Accept: 'application/json',
@@ -21,7 +21,7 @@ export const getAlbums = () => {
     grant_type: 'client_credentials',
   };
 
-  return new Promise<Album[]>(async (resolve, reject) => {
+  return new Promise<Release[]>(async (resolve, reject) => {
     if (client_id && client_secret) {
       try {
         const tokenRes = await axios.post(
@@ -35,7 +35,7 @@ export const getAlbums = () => {
             Authorization: `Bearer ${access_token}`,
           },
         };
-        const albumRes = await axios.get(
+        const res = await axios.get(
           queryString.stringifyUrl({
             url: 'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
             query: {
@@ -44,17 +44,18 @@ export const getAlbums = () => {
           }),
           auth
         );
-        const { items }: { items: any[] } = albumRes.data;
-        const albums: Album[] = items.map(({ track }) => {
+        const { items }: { items: any[] } = res.data;
+        const releases: Release[] = items.map(({ track }) => {
           return {
             link: track.album.external_urls.spotify,
-            name: track.album.name,
+            albumName: track.album.name,
+            trackName: track.name,
             releaseDate: track.album.release_date,
             image: track.album.images[1].url,
           };
         });
-        albums.reverse();
-        resolve(albums);
+        releases.reverse();
+        resolve(releases);
       } catch (err) {
         reject({ err });
       }
