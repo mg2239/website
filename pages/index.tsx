@@ -6,10 +6,8 @@ import { Release, Song } from '../types';
 import { getCurrentlyListening, getReleases } from '../util/spotify';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const releases = await getReleases().catch(() => []);
-  const song = await getCurrentlyListening().catch(() => ({
-    isPlaying: false,
-  }));
+  const releases = await getReleases();
+  const song = await getCurrentlyListening();
   return { props: { releases, song } };
 };
 

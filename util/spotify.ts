@@ -4,8 +4,9 @@ import { Release, Song } from '../types';
 
 const client_id = process.env.CLIENT_ID!;
 const client_secret = process.env.CLIENT_SECRET!;
+const refresh_token = process.env.REFRESH_TOKEN!;
 
-export const getReleases = () => {
+export const getReleases = async (): Promise<Release[]> => {
   const headers = {
     headers: {
       Accept: 'application/json',
@@ -21,53 +22,45 @@ export const getReleases = () => {
     grant_type: 'client_credentials',
   };
 
-  return new Promise<Release[]>(async (resolve, reject) => {
-    if (client_id && client_secret) {
-      try {
-        const tokenRes = await axios.post(
-          'https://accounts.spotify.com/api/token',
-          queryString.stringify(data),
-          headers
-        );
-        const { access_token } = tokenRes.data;
-        const auth = {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        };
-        const res = await axios.get(
-          queryString.stringifyUrl({
-            url: 'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
-            query: {
-              limit: 50,
-            },
-          }),
-          auth
-        );
-        const { items }: { items: any[] } = res.data;
-        const releases: Release[] = items.map(({ track }) => {
-          return {
-            link: track.album.external_urls.spotify,
-            albumName: track.album.name,
-            trackName: track.name,
-            releaseDate: track.album.release_date,
-            image: track.album.images[1].url,
-          };
-        });
-        releases.reverse();
-        resolve(releases);
-      } catch (err) {
-        reject({ err });
-      }
-    } else {
-      reject({ err: 'No env variables' });
-    }
-  });
+  try {
+    const tokenRes = await axios.post(
+      'https://accounts.spotify.com/api/token',
+      queryString.stringify(data),
+      headers
+    );
+    const { access_token } = tokenRes.data;
+    const auth = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    };
+    const res = await axios.get(
+      queryString.stringifyUrl({
+        url: 'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
+        query: {
+          limit: 50,
+        },
+      }),
+      auth
+    );
+
+    const { items }: { items: any[] } = res.data;
+
+    return items
+      .map(({ track }) => ({
+        link: track.album.external_urls.spotify,
+        albumName: track.album.name,
+        trackName: track.name,
+        releaseDate: track.album.release_date,
+        image: track.album.images[1].url,
+      }))
+      .reverse();
+  } catch (err) {
+    return [];
+  }
 };
 
-const refresh_token = process.env.REFRESH_TOKEN!;
-
-export const getCurrentlyListening = async () => {
+export const getCurrentlyListening = async (): Promise<Song> => {
   const data = {
     grant_type: 'refresh_token',
     refresh_token: refresh_token,
@@ -84,40 +77,36 @@ export const getCurrentlyListening = async () => {
     },
   };
 
-  return new Promise<Song>(async (resolve, reject) => {
-    try {
-      const tokenRes = await axios.post(
-        'https://accounts.spotify.com/api/token',
-        queryString.stringify(data),
-        headers
-      );
-      const { access_token } = tokenRes.data;
-      const playingRes = await axios.get(
-        'https://api.spotify.com/v1/me/player/currently-playing',
-        {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        }
-      );
-      if (playingRes.data) {
-        const { is_playing } = playingRes.data;
-        const {
-          artists,
-          name,
-          external_urls: { spotify },
-        } = playingRes.data.item;
-        const artist = artists[0].name;
-        resolve({
-          title: `${artist} - ${name}`.toLowerCase(),
-          link: spotify,
-          isPlaying: is_playing,
-        });
-      } else {
-        reject({ is_playing: false });
+  try {
+    const tokenRes = await axios.post(
+      'https://accounts.spotify.com/api/token',
+      queryString.stringify(data),
+      headers
+    );
+    const { access_token } = tokenRes.data;
+    const playingRes = await axios.get(
+      'https://api.spotify.com/v1/me/player/currently-playing',
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
       }
-    } catch (err) {
-      reject({ err });
-    }
-  });
+    );
+
+    const { is_playing } = playingRes.data;
+    const {
+      artists,
+      name,
+      external_urls: { spotify },
+    } = playingRes.data.item;
+    const artist = artists[0].name;
+
+    return {
+      title: `${artist} - ${name}`.toLowerCase(),
+      link: spotify,
+      isPlaying: is_playing,
+    };
+  } catch (err) {
+    return { isPlaying: false };
+  }
 };
