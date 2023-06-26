@@ -1,7 +1,7 @@
-export type Album = {
+export type Release = {
   link: string;
-  name: string;
-  releaseDate: string;
+  trackName?: string;
+  albumName: string;
   image: string;
 };
 

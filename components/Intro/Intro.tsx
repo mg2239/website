@@ -7,8 +7,9 @@ import { Song } from '../../types';
 const Link = ({ to, children }: React.PropsWithChildren<{ to: string }>) => {
   return (
     <a
-      className="inline mr-2 text-sm font-semibold hover:text-gray-500 rounded-full transition-colors sm:mr-4 sm:text-base"
+      className="mr-2 inline rounded-full text-sm font-semibold transition-colors hover:text-gray-500 sm:mr-4 sm:text-base"
       href={to}
+      target="_blank"
     >
       {children}
     </a>
@@ -32,7 +33,7 @@ const Text = (props: { song: Song }) => {
       <p>cs @ cornell &apos;22</p>
       {song.isPlaying && (
         <p>
-          currently listening to <Link to={song.link}>{song.title}</Link>
+          listening to <Link to={song.link}>{song.title}</Link>
         </p>
       )}
     </div>
@@ -44,16 +45,15 @@ const Intro = ({ song }: { song: Song }) => {
   const size = isMobile ? 80 : 140;
 
   return (
-    <div className="mr-4 mb-8 ml-4 sm:mr-0 sm:mb-16 sm:ml-0">
-      <div className="flex grid-cols-6 gap-1 mb-2 sm:grid sm:grid-cols-3 sm:gap-6">
-        <div className="mr-5 sm:flex sm:justify-center sm:m-0">
+    <div className="mb-8 ml-4 mr-4 sm:mb-16 sm:ml-0 sm:mr-0">
+      <div className="mb-2 flex grid-cols-6 gap-1 sm:grid sm:grid-cols-3 sm:gap-6">
+        <div className="mr-5 sm:m-0 sm:flex sm:flex-col sm:items-center ">
           <Image
             src="/face.png"
             alt="face"
-            layout="fixed"
             width={size}
             height={size}
-            className="invert-0 dark:invert transition-all"
+            className="invert-0 transition-all dark:invert"
           />
         </div>
         <div className="col-span-5 sm:col-span-2">
