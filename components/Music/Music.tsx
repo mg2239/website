@@ -5,7 +5,7 @@ import { Release as ReleaseType } from '../../types';
 const Release = ({ link, trackName, albumName, image }: ReleaseType) => {
   return (
     <div className="m-auto">
-      <a href={link} className="group flex">
+      <a href={link} target="_blank" className="group flex">
         <Image
           alt=""
           src={image}
