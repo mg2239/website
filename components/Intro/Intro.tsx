@@ -29,7 +29,6 @@ const Text = (props: { song: Song }) => {
   return (
     <div className="text-sm sm:text-base">
       <p>web dev and music producer</p>
-      <p>swe @ cameo</p>
       <p>cs @ cornell &apos;22</p>
       {song.isPlaying && (
         <p>
@@ -59,9 +58,6 @@ const Intro = ({ song }: { song: Song }) => {
         <div className="col-span-5 sm:col-span-2">
           <h1 className="mb-1 font-light sm:mb-2">matthew guo</h1>
           <div className="mb-2">
-            <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
-              resume
-            </Link>
             <Link to="https://github.com/mg2239">github</Link>
             <Link to="https://www.linkedin.com/in/mg2239/">linkedin</Link>
           </div>
