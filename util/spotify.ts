@@ -1,4 +1,3 @@
-import axios from 'axios';
 import queryString from 'query-string';
 import { Release, Song } from '../types';
 
@@ -6,45 +5,45 @@ const client_id = process.env.CLIENT_ID!;
 const client_secret = process.env.CLIENT_SECRET!;
 const refresh_token = process.env.REFRESH_TOKEN!;
 
-export const getReleases = async (): Promise<Release[]> => {
-  const headers = {
+const authToken = Buffer.from(client_id + ':' + client_secret).toString(
+  'base64'
+);
+
+const getSpotifyToken = (body: Record<string, any>) => {
+  return fetch('https://accounts.spotify.com/api/token', {
+    method: 'post',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${authToken}`,
     },
-    auth: {
-      username: client_id,
-      password: client_secret,
-    },
-  };
+    body: new URLSearchParams(body),
+  })
+    .then((res) => res.json())
+    .then((data) => data.access_token);
+};
 
-  const data = {
-    grant_type: 'client_credentials',
-  };
-
+export const getReleases = async (): Promise<Release[]> => {
   try {
-    const tokenRes = await axios.post(
-      'https://accounts.spotify.com/api/token',
-      queryString.stringify(data),
-      headers
-    );
-    const { access_token } = tokenRes.data;
-    const auth = {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    };
-    const res = await axios.get(
+    const access_token = await getSpotifyToken({
+      grant_type: 'client_credentials',
+    });
+
+    const res = await fetch(
       queryString.stringifyUrl({
         url: 'https://api.spotify.com/v1/playlists/0lCLH7IqNSpnGhdzQF3JmP/tracks',
         query: {
           limit: 50,
         },
       }),
-      auth
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     );
 
-    const { items }: { items: any[] } = res.data;
+    const { items }: { items: any[] } = await res.json();
 
     return items
       .map(({ track }) => ({
@@ -61,44 +60,30 @@ export const getReleases = async (): Promise<Release[]> => {
 };
 
 export const getCurrentlyListening = async (): Promise<Song> => {
-  const data = {
-    grant_type: 'refresh_token',
-    refresh_token: refresh_token,
-  };
-
-  const headers = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    auth: {
-      username: client_id,
-      password: client_secret,
-    },
-  };
-
   try {
-    const tokenRes = await axios.post(
-      'https://accounts.spotify.com/api/token',
-      queryString.stringify(data),
-      headers
-    );
-    const { access_token } = tokenRes.data;
-    const playingRes = await axios.get(
+    const access_token = await getSpotifyToken({
+      grant_type: 'refresh_token',
+      refresh_token: refresh_token,
+    });
+
+    const res = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing',
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
+        cache: 'no-cache',
       }
     );
 
-    const { is_playing } = playingRes.data;
+    const { is_playing, item } = await res.json();
+
     const {
       artists,
       name,
       external_urls: { spotify },
-    } = playingRes.data.item;
+    } = item;
+
     const artist = artists[0].name;
 
     return {

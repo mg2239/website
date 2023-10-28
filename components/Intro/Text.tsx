@@ -1,6 +1,5 @@
 'use client';
 
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Song } from '../../types';
 import { Link } from './Link';
@@ -10,7 +9,9 @@ export const Text = (props: { song: Song }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      axios.get('/api/currentlyListening').then(({ data }) => setSong(data));
+      fetch('/api/currentlyListening')
+        .then((res) => res.json())
+        .then((data) => setSong(data));
     }, 5000);
     return () => clearInterval(interval);
   }, []);
