@@ -5,7 +5,7 @@ import { Text } from './Text';
 
 const Intro = ({ song }: { song: Song }) => {
   return (
-    <div className="mb-8 ml-4 mr-4 sm:mb-16 sm:ml-0 sm:mr-0">
+    <div className="mx-4 mb-8 sm:mx-0 sm:mb-16">
       <div className="mb-2 flex grid-cols-6 gap-1 sm:grid sm:grid-cols-3 sm:gap-6">
         <div className="mr-5 sm:m-0 sm:flex sm:flex-col sm:items-center ">
           <div className="h-20 w-20 sm:h-auto sm:w-auto">
