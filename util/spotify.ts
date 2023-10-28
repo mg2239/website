@@ -18,6 +18,7 @@ const getSpotifyToken = (body: Record<string, any>) => {
       Authorization: `Basic ${authToken}`,
     },
     body: new URLSearchParams(body),
+    cache: 'no-cache',
   })
     .then((res) => res.json())
     .then((data) => data.access_token);
@@ -40,6 +41,7 @@ export const getReleases = async (): Promise<Release[]> => {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
+        cache: 'no-cache',
       }
     );
 
