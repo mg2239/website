@@ -82,14 +82,14 @@ export const getCurrentlyListening = async (): Promise<Song> => {
 
     const {
       artists,
-      name,
+      name: title,
       external_urls: { spotify },
     } = item;
 
-    const artist = artists[0].name;
+    const artistNames = artists.map(({ name }: any) => name).join(', ');
 
     return {
-      title: `${artist} - ${name}`.toLowerCase(),
+      title: `${artistNames} — ${title}`.toLowerCase(),
       link: spotify,
       isPlaying: is_playing,
     };
