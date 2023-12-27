@@ -49,7 +49,7 @@ export const getReleases = async (): Promise<Release[]> => {
 
     return items
       .map(({ track }) => ({
-        link: track.album.external_urls.spotify,
+        link: track.external_urls.spotify,
         albumName: track.album.name,
         trackName: track.name,
         releaseDate: track.album.release_date,
