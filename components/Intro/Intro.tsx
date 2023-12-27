@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { Song } from '../../types';
+import { Face } from './Face';
 import { Link } from './Link';
 import { Text } from './Text';
 
@@ -9,13 +9,7 @@ const Intro = ({ song }: { song: Song }) => {
       <div className="mb-2 flex grid-cols-6 gap-1 sm:grid sm:grid-cols-3 sm:gap-6">
         <div className="mr-5 sm:m-0 sm:flex sm:flex-col sm:items-center ">
           <div className="h-20 w-20 sm:h-auto sm:w-auto">
-            <Image
-              src="/face.png"
-              alt="face"
-              width={140}
-              height={140}
-              className="invert-0 transition-all dark:invert"
-            />
+            <Face />
           </div>
         </div>
         <div className="col-span-5 sm:col-span-2">

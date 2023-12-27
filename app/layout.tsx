@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body>{children}</body>
+    <html lang="en" className={`${GeistSans.className} scroll-smooth`}>
+      <body className="bg-slate-50 text-gray-800">{children}</body>
     </html>
   );
 }

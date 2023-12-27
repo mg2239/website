@@ -3,9 +3,11 @@
   "description": "",
   "version": "1.0.0",
   "dependencies": {
+    "@types/animejs": "^3.1.12",
     "@types/node": "^14.0.14",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "animejs": "^3.2.2",
     "dayjs": "^1.10.7",
     "geist": "^1.0.0",
     "next": "^14.0.0",
