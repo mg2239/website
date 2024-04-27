@@ -5,7 +5,7 @@ const DarkModeToggle = () => {
   const { enabled, toggle } = useDarkMode();
   return (
     <button
-      className="fixed right-6 bottom-6 p-3 text-xl text-white dark:text-slate-900 bg-black dark:bg-white rounded-full shadow-md shadow-slate-900/50 sm:right-10 sm:bottom-10"
+      className="fixed bottom-6 right-6 rounded-full bg-black p-3 text-xl text-white shadow-md shadow-slate-900/50 dark:bg-white dark:text-slate-900 sm:bottom-10 sm:right-10"
       onClick={toggle}
     >
       {enabled ? <FaSun /> : <FaMoon />}
