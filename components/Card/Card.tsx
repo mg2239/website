@@ -16,18 +16,22 @@ function Spotify({ song }: SpotifyProps) {
 
   return (
     <div className="flex items-center">
-      <div className="min-h-[60px] min-w-[60px]">
-        <Image
-          src={song.albumArt}
-          width={60}
-          height={60}
-          alt={`album cover for ${song.title}`}
-        />
-      </div>
-      <div className="ml-3 text-sm leading-snug">
-        <p className="font-semibold">{song.title}</p>
+      <Image
+        src={song.albumArt}
+        width={200}
+        height={200}
+        alt={`album cover for ${song.title}`}
+        className="h-[60px] w-[60px]"
+        style={{ objectFit: 'cover' }}
+      />
+      <div className="ml-3 overflow-hidden text-sm leading-snug">
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold">
+          {song.title}
+        </p>
         <p>by {song.artists}</p>
-        <p>on {song.albumName}</p>
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+          on {song.albumName}
+        </p>
       </div>
     </div>
   );
@@ -60,43 +64,45 @@ export function Card(props: Props) {
         .then((data) => data.json())
         .then((data) => setSong(data));
     }, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative flex w-[340px] flex-col overflow-clip rounded-lg bg-neutral-800 shadow-lg shadow-neutral-500">
+    <div className="relative flex w-[340px] flex-col overflow-clip rounded-lg shadow-lg shadow-neutral-500">
       {/* Banner */}
-      <div className="h-[60px] bg-green-600" />
+      <div className="h-[60px] bg-green-200" />
       <Image
         className="absolute left-4 top-4 box-content rounded-full border-8 border-neutral-800"
-        src="/face.jpg"
+        src="/face.webp"
         alt="face"
         width={80}
         height={80}
       />
-      <div className="h-[60px]" />
+      <div className="h-[60px] bg-neutral-800" />
       {/* Body */}
-      <div className="mx-4 mb-4 rounded-lg bg-neutral-900 p-3">
-        {/* Header */}
-        <h1 className="text-xl font-semibold text-white">matthew guo</h1>
-        {/* Divider */}
-        <span className="mt-3 block w-full border-t border-neutral-700" />
-        {/* Sections */}
-        <Section title="About Me">
-          <p className="text-sm">web developer and music producer</p>
-        </Section>
-        {song.isPlaying && (
-          <Section title="Listening to Spotify">
-            <Spotify song={song} />
+      <div className="bg-neutral-800">
+        <div className="mx-4 mb-4 rounded-lg bg-neutral-900 p-3">
+          {/* Header */}
+          <h1 className="text-xl font-semibold text-white">matthew guo</h1>
+          {/* Divider */}
+          <span className="mt-3 block w-full border-t border-neutral-700" />
+          {/* Sections */}
+          <Section title="About Me">
+            <p className="text-sm">web dev and music producer</p>
           </Section>
-        )}
-        <Section title="Roles">
-          <div className="mt-1 flex flex-wrap gap-1">
-            <Role title="Cornell '22" color="bg-red-500" />
-            <Role title="Cameo" color="bg-purple-500" />
-          </div>
-        </Section>
-        <Section title="Links"></Section>
+          {song.isPlaying && (
+            <Section title="Listening to Spotify">
+              <Spotify song={song} />
+            </Section>
+          )}
+          <Section title="Roles">
+            <div className="mt-1 flex flex-wrap gap-1">
+              <Role title="Cornell '22" color="bg-red-500" />
+              <Role title="Cameo" color="bg-purple-500" />
+              <Role title="Hive" color="bg-blue-500" />
+            </div>
+          </Section>
+          <Section title="Links"></Section>
+        </div>
       </div>
     </div>
   );

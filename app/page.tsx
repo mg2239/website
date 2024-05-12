@@ -6,7 +6,7 @@ export default async function Page() {
   const song = await getCurrentlyListening();
 
   return (
-    <div className="flex justify-center  px-4 py-8">
+    <div className="flex h-screen items-center justify-center">
       <Head />
       <Card song={song} />
     </div>
