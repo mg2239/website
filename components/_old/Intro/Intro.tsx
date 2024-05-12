@@ -1,75 +1,33 @@
-import axios from 'axios';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { useIsMobile } from '../../../hooks/useIsMobile';
-import { Song } from '../../../types';
+import { Song } from '../../types';
+import { Face } from './Face';
+import { Link } from './Link';
+import { Text } from './Text';
 
-function Link({ to, children }: React.PropsWithChildren<{ to: string }>) {
+const Intro = ({ song }: { song: Song }) => {
   return (
-    <a
-      className="mr-2 inline rounded-full text-sm font-semibold transition-colors hover:text-gray-500 sm:mr-4 sm:text-base"
-      href={to}
-    >
-      {children}
-    </a>
-  );
-}
-
-function Text(props: { song: Song }) {
-  const [song, setSong] = useState<Song>(props.song);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      axios.get('/api/currentlyListening').then(({ data }) => setSong(data));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="text-sm sm:text-base">
-      <p>web dev and music producer</p>
-      <p>swe @ cameo</p>
-      <p>cs @ cornell &apos;22</p>
-      {song.isPlaying && (
-        <p>
-          currently listening to <Link to={song.link}>{song.title}</Link>
-        </p>
-      )}
-    </div>
-  );
-}
-
-function Intro({ song }: { song: Song }) {
-  const isMobile = useIsMobile();
-  const size = isMobile ? 80 : 140;
-
-  return (
-    <div className="mb-8 ml-4 mr-4 sm:mb-16 sm:ml-0 sm:mr-0">
+    <div className="mx-4 mb-8 sm:mx-0 sm:mb-16">
       <div className="mb-2 flex grid-cols-6 gap-1 sm:grid sm:grid-cols-3 sm:gap-6">
-        <div className="mr-5 sm:m-0 sm:flex sm:justify-center">
-          <Image
-            src="/face.png"
-            alt="face"
-            width={size}
-            height={size}
-            className="block"
-          />
+        <div className="mr-5 sm:m-0 sm:flex sm:flex-col sm:items-center ">
+          <div className="h-20 w-20 sm:h-auto sm:w-auto">
+            <Face />
+          </div>
         </div>
         <div className="col-span-5 sm:col-span-2">
           <h1 className="mb-1 font-light sm:mb-2">matthew guo</h1>
           <div className="mb-2">
-            <Link to="https://drive.google.com/file/u/1/d/1C0ey-CJc0IcWVugmebR6NFBLsfhdX9ZH/view?usp=sharing">
-              resume
-            </Link>
             <Link to="https://github.com/mg2239">github</Link>
             <Link to="https://www.linkedin.com/in/mg2239/">linkedin</Link>
           </div>
-          {!isMobile && <Text song={song} />}
+          <div className="hidden sm:block">
+            <Text song={song} />
+          </div>
         </div>
       </div>
-      {isMobile && <Text song={song} />}
+      <div className="sm:hidden">
+        <Text song={song} />
+      </div>
     </div>
   );
-}
+};
 
 export default Intro;

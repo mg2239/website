@@ -8,12 +8,14 @@
   }
   body {
     @apply text-gray-300;
+  h1 {
+    @apply text-3xl;
+    @apply font-bold;
   }
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
+  h2 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
 }
 
 html {
