@@ -1,4 +1,5 @@
-import axios from 'axios';
+'use client';
+
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Song } from '../../types';
@@ -55,7 +56,9 @@ export function Card(props: Props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      axios.get('/api/currentlyListening').then(({ data }) => setSong(data));
+      fetch('/api/currentlyListening')
+        .then((data) => data.json())
+        .then((data) => setSong(data));
     }, 5000);
     return () => clearInterval(interval);
   }, []);
