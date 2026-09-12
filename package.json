@@ -1,39 +1,26 @@
 {
   "name": "website",
-  "description": "",
-  "version": "1.0.0",
-  "dependencies": {
-    "@types/animejs": "^3.1.12",
-    "@types/node": "^14.0.14",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "animejs": "^3.2.2",
-    "dayjs": "^1.10.7",
-    "geist": "^1.0.0",
-    "next": "^14.2.3",
-    "query-string": "^7.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^4.3.1",
-    "typescript": "^4.5.2"
-  },
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
-    "local": "next build && next start"
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^14.2.3",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-tailwindcss": "^3.0.0",
-    "postcss": "^8.4.5",
-    "prettier": "^2.0.5",
-    "prettier-plugin-organize-imports": "^3.2.2",
-    "prettier-plugin-tailwindcss": "^0.3.0",
-    "tailwindcss": "^3.0.7"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

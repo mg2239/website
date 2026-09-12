@@ -1,15 +1,9 @@
-import Intro from '../components/Intro/Intro';
-import Music from '../components/Music/Music';
-import { getCurrentlyListening, getReleases } from '../util/spotify';
-
-export default async function Page() {
-  const releases = await getReleases();
-  const song = await getCurrentlyListening();
-
+export default function Home() {
   return (
-    <div className="m-auto flex flex-col py-8 sm:max-w-screen-md sm:px-2 sm:py-16">
-      <Intro song={song} />
-      <Music releases={releases} />
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main>
+        <p>under construction...</p>
+      </main>
     </div>
   );
 }
